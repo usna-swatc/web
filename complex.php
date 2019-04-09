@@ -15,7 +15,7 @@
   require_once("page.inc.php");
 
   // Create a Page object and set the Page title
-  $page = new Page("Basic");
+  $page = new Page("Complex");
   $page->content = '';
 
   // Add to the Page
@@ -23,25 +23,25 @@
 
   $page->content.="<div class=row>";
   $page->content.='<div class=col-md-4></div> <div class=col-md-4>';
-  $page->content.='<form action="basic/takeoff.php" method="REQUEST">';
-  $page->content.='<input type=hidden name=takeoff class=form-control>';
-  $page->content.='<input type="submit" class=form-control value="Take Off">' . '</form> <br>';
+  $page->content.='<form action="complex/circle.php" method="REQUEST">';
+  $page->content.='<input type=hidden name=circle class=form-control>';
+  $page->content.='<input type="submit" class=form-control value="Circle">' . '</form> <br>';
   $page->content.='</div>';
   $page->content.="</div>";
 
   $page->content.="<div class=row>";
   $page->content.='<div class=col-md-4></div> <div class=col-md-4>';
-  $page->content.='<form action="basic/land.php" method="REQUEST">';
-  $page->content.='<input type=hidden name=land class=form-control>';
-  $page->content.='<input type="submit" class=form-control value="Land">' . '</form> <br>';
+  $page->content.='<form action="complex/track.php" method="REQUEST">';
+  $page->content.='<input type=hidden name=track class=form-control>';
+  $page->content.='<input type="submit" class=form-control value="Track">' . '</form> <br>';
   $page->content.='</div>';
   $page->content.="</div>";
 
   $page->content.="<div class=row>";
   $page->content.='<div class=col-md-4></div> <div class=col-md-4>';
-  $page->content.='<form action="basic/goto.php" method="REQUEST">';
-  $page->content.='<input type=hidden name=goto class=form-control>';
-  $page->content.='<input type="submit" class=form-control value="Go To">' . '</form> <br>';
+  $page->content.='<form action="complex/survey.php" method="REQUEST">';
+  $page->content.='<input type=hidden name=survey class=form-control>';
+  $page->content.='<input type="submit" class=form-control value="Survey">' . '</form> <br>';
   $page->content.='</div>';
   $page->content.="</div>";
 
