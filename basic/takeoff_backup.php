@@ -11,29 +11,10 @@
   <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
   <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
   <script type="text/javascript" type="text/javascript">
+
+    // connect to ROS, needs to be changed to the O-Droid
     var ros = new ROSLIB.Ros({
       url : 'ws://localhost:9090'
-    });
-
-    var takeOffClient = new ROSLIB.ActionClient({
-      ros : ros,
-      serverName : '/takeOff',
-      actionName : 'goats-msgs/action/takeoff.action'
-    });
-
-    var goal = new ROSLIB.Goal({
-      actionClient : takeoff.action,
-      goalMessage : {
-        pose,position.z: 50
-      }
-    });
-
-    goal.on('feedback', function(feedback) {
-      console.log('Feedback: ' + feedback.sequence);
-    });
-
-    goal.on('result', function(result) {
-      console.log('Final Result: ' + result.sequence);
     });
 
     ros.on('connection', function() {
@@ -48,6 +29,20 @@
       console.log('Connection to websocket server closed.');
     });
 
-    goal.send();
+    var cmdTopic = new ROSLIB.Topic({
+      ros : ros,
+      name : '/cmd_topic',
+      messageType : '../goats-msgs/Task.msg'
+    })
+
+    var msg = new ROSLIB.Message({
+      target_group : 0,
+      target_sys : 0,
+      target_task : 'takeoff.action'
+    });
+    cmdTopic.publish(msg);
+
+    window.location.href = "../basic.php";
+
   </script>
 </html>
