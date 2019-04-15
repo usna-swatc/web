@@ -23,17 +23,9 @@
 
   $page->content.="<div class=row>";
   $page->content.='<div class=col-md-4></div> <div class=col-md-4>';
-  $page->content.='<form action="missions.php" method="REQUEST">';
-  $page->content.='<input type=hidden name=missions class=form-control>';
-  $page->content.='<input type="submit" class=form-control value="Mission Selection">' . '</form> <br>';
-  $page->content.='</div>';
-  $page->content.="</div>";
-
-  $page->content.="<div class=row>";
-  $page->content.='<div class=col-md-4></div> <div class=col-md-4>';
-  $page->content.='<form action="manual.php" method="REQUEST">';
-  $page->content.='<input type=hidden name=manual class=form-control>';
-  $page->content.='<input type="submit" class=form-control value="Manual Operation">' . '</form> <br>';
+  $page->content.='<form action="complex.php" method="REQUEST">';
+  $page->content.='<input type=hidden name=complex class=form-control>';
+  $page->content.='<input type="submit" class=form-control value="Complex Actions">' . '</form> <br>';
   $page->content.='</div>';
   $page->content.="</div>";
 
