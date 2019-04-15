@@ -24,7 +24,7 @@
     var goal = new ROSLIB.Goal({
       actionClient : takeoff.action,
       goalMessage : {
-        pose,position.z: 50
+        pose.position.z: 50
       }
     });
 
