@@ -48,3 +48,7 @@
     goal.send();
   </script>
 </html>
+<?php
+  header("Location:../basic.php");
+  exit;
+?>
