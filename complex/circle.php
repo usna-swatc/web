@@ -11,10 +11,26 @@
   <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
   <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
   <script type="text/javascript" type="text/javascript">
-
-    // connect to ROS, needs to be changed to the O-Droid
     var ros = new ROSLIB.Ros({
       url : 'ws://localhost:9090'
+    });
+
+    var circleClient = new ROSLIB.ActionClient({
+      ros : ros,
+      serverName : '/circle',
+      actionName : 'goats-msgs/action/circle.action'
+    });
+
+    var goal = new ROSLIB.Goal({
+      actionClient : circle.action,
+    });
+
+    goal.on('feedback', function(feedback) {
+      console.log('Feedback: ' + feedback.sequence);
+    });
+
+    goal.on('result', function(result) {
+      console.log('Final Result: ' + result.sequence);
     });
 
     ros.on('connection', function() {
@@ -29,20 +45,6 @@
       console.log('Connection to websocket server closed.');
     });
 
-    var cmdTopic = new ROSLIB.Topic({
-      ros : ros,
-      name : '/cmd_topic',
-      messageType : '../goats-msgs/Task.msg'
-    })
-
-    var msg = new ROSLIB.Message({
-      target_group : 0,
-      target_sys : 0,
-      target_task : 'circle.action'
-    });
-    cmdTopic.publish(msg);
-
-    window.location.href = "../complex.php";
-
+    goal.send();
   </script>
 </html>
